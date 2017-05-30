@@ -1,16 +1,16 @@
 # Kompilator jezyka HDML
 <i>Język Programowania: Prolog</i> <br>
-<br
+<br>
 Celem zadania jest napisanie interpretera języka HDML, tak aby wraz z rozwiązaniami poprzednich zadań otrzymać kompletny system do weryfikowania prostych układów cyfrowych.
 <br>
 <br>
 <br>
 Opis jezyka HDML: <b>prac3_extra.pdf</b> <br>
-Testy poprawnościowe należy uruchomić za pomocą polecenia:
+Testy poprawnościowe należy uruchomić za pomocą polecenia: <br>
 swipl -f verify.pl -t main PROGRAM TEST_SUITE <br>
 gdzie: <br>
-PROGRAM~~~~~~jest ścieżką do programu w~języku HDML <br>
-TEST_SUITE~~~jest ścieżką do pliku z testami <br>
+PROGRAM      jest ścieżką do programu w języku HDML <br>
+TEST_SUITE   jest ścieżką do pliku z testami <br>
 
 Interpreter: <b>kamil_breczko_eval.pl</b> <br>
 Parser: <b>kamil_breczko_parser.pl</b> <br>
