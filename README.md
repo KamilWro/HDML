@@ -1,5 +1,5 @@
 # Systemu do weryfikacji układów cyfrowych
-<i>Metody Programowania, semestr letni 2016/2017 II UWr </i>
+<i>Metody Programowania, semestr letni 2016/2017 II UWr </i> <br>
 <i>Język Programowania: Prolog</i> <br>
 <br>
 Implementacja systemu do weryfikacji prostych układów cyfrowych. System korzysta z: 
@@ -9,8 +9,8 @@ Implementacja systemu do weryfikacji prostych układów cyfrowych. System korzys
  
  ## Interpreter języka HDML
 Testy poprawnościowe należy uruchomić za pomocą polecenia: <br>
-swipl -f verify.pl -t main PROGRAM TEST_SUITE <br>
+<i> swipl -f verify.pl -t main PROGRAM TEST_SUITE </i> <br>
 gdzie: <br>
-PROGRAM      jest ścieżką do programu w języku HDML <br>
-TEST_SUITE   jest ścieżką do pliku z testami <br>
+<i> PROGRAM </i>     jest ścieżką do programu w języku HDML <br>
+ <i> TEST_SUITE </i>   jest ścieżką do pliku z testami <br>
 
