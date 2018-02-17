@@ -35,8 +35,8 @@
 % na format testów i wyników działania programu. Zachęcamy jednak do
 % modyfikowania i ulepszania jej kodu.
 
-:- use_module(kamil_breczko_tests).
-:- use_module(kamil_breczko_solver).
+:- use_module(tests).
+:- use_module(solver).
 
 :- op(200, fx, ~).
 :- op(500, xfy, v).

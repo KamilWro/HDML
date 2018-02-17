@@ -1,4 +1,4 @@
-:- module(kamil_breczko_solver, [solve/2]).
+:- module(solver, [solve/2]).
 
 % definiujemy operatory ~/1 oraz v/2
 :- op(200, fx, ~).

@@ -8,10 +8,6 @@ Implementacja systemu do weryfikacji prostych układów cyfrowych. System korzys
  - [x] program szukający wartościowań spełniających zadany zbiór klauzul;
  
  ## Interpreter języka HDML
-Opis jezyka HDML: [prac3_extra.pdf](./prac3_extra.pdf) <br>
-Interpreter: [kamil_breczko_eval.pl](./kamil_breczko_eval.pl) <br>
-Sprawdzarka: [verify.pl](./verify.pl) <br>
-<br>
 Testy poprawnościowe należy uruchomić za pomocą polecenia: <br>
 swipl -f verify.pl -t main PROGRAM TEST_SUITE <br>
 gdzie: <br>

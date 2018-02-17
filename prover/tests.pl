@@ -1,4 +1,4 @@
-:- module(kamil_breczko_tests, [resolve_tests/5, prove_tests/4]).
+:- module(tests, [resolve_tests/5, prove_tests/4]).
 
 % definiujemy operatory ~/1 oraz v/2
 :- op(200, fx, ~).

@@ -1,5 +1,5 @@
 % Definiujemy moduł zawierający testy.
-:- module(kamil_breczko_tests, [tests/5]).
+:- module(tests, [tests/5]).
 
 % definiujemy operatory ~/1 oraz v/2
 :- op(200, fx, ~).

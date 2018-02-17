@@ -14,20 +14,8 @@ Sposób rozwiązania:<br>
 </i>
 <br>
 <br>
-<br>
-<br>
-<br>
-
-Tresc zadania: [prac1.pdf](./prac1.pdf) <br>
-Testy poprawnościowe/wydajnościowe: [kamil_breczko_tests.pl](./kamil_breczko_tests.pl)<br>
-Rozwiązanie zadania: [kamil_breczko_solver.pl](./kamil_breczko_solver.pl) <br>
-Sprawdzarka: [prac1.pl](./prac1.pl) <br>
-<br>
-<br>
-<br>
-
 Sprawdzaczkę należy uruchomić w katalogu w którym znajdują się testy i rozwiązania, poleceniem: <br>
-<i>swipl prac1.pl</i>
+<i>swipl verify.pl</i>
 
 Za pomocą predykatu: 
 <ul>

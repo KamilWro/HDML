@@ -1,4 +1,4 @@
-:- module(kamil_breczko_tests, [tests/3]).
+:- module(tests, [tests/3]).
 
 % Zbiór faktów definiujących testy
 

@@ -52,8 +52,8 @@
 % 
 % Do poprawnego działania sprawdzaczki należy jeszcze zmodyfikować
 % poniższe dwa wiersze:
-:- use_module(kamil_breczko_tests).
-:- use_module(kamil_breczko_prover).
+:- use_module(tests).
+:- use_module(prover).
 
 :- op(200, fx, ~).
 :- op(500, xfy, v).

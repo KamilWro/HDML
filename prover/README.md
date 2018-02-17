@@ -16,16 +16,8 @@ klauzula w "NegativeTuples".
 <b>Uwaga:</b> Powstała rezolwenta nie może być tautologią. Także po każdej rezolwencie są usuwane nadzbiory.
 </i>
 <br>
-<br>
-<br>
-Tresc zadania: [prac2.pdf](./prac2.pdf) <br>
-Testy poprawnościowe/wydajnościowe: [kamil_breczko_tests.pl](./kamil_breczko_tests.pl) <br>
-Rozwiązanie zadania: [kamil_breczko_prover.pl](./kamil_breczko_prover.pl)<br>
-Sprawdzarka: [prac2.pl](./prac2.pl) <br>
-<br>
-<br>
 Sprawdzaczkę należy uruchomić w katalogu w którym znajdują się testy i rozwiązania, poleceniem: <br>
-<i>swipl prac2.pl</i>
+<i>swipl verify.pl</i>
 
 Za pomocą predykatu: 
 <ul>

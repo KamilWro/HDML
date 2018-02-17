@@ -23,11 +23,11 @@
 % UWAGA: do poprawnego działania programu wymagane jest poprawne rozwiązanie
 % pracowni 1 lub 2, oraz pracowni 3 wraz z zadaniem dodatkowym
 % zmodyfikuj 2 następne wiersze:
-:- use_module('parser/kamil_breczko_parser.pl'). % rozwiązanie pracowni 3
-:- use_module('kamil_breczko_eval.pl').   % rozwiązanie zadania dodatkowego
+:- use_module('parser/parser.pl'). % rozwiązanie pracowni 3
+:- use_module('eval.pl').   % rozwiązanie zadania dodatkowego
 
 % oraz odkomentuk i zmodyfiku jeden z następnych dwóch wierszy
-:- use_module('solver/kamil_breczko_solver.pl').     % rozwiązanie pracowni 1
+:- use_module('solver/solver.pl').     % rozwiązanie pracowni 1
 %:- use_module('prover/kamil_breczko_prover.pl'). % rozwiązanie pracowni 2
 
 verify(Path, FuncName, Arg, ExpectedResult) :-

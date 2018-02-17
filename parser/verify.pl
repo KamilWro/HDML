@@ -37,8 +37,8 @@
 % 
 % Do poprawnego działania sprawdzaczki należy jeszcze zmodyfikować
 % poniższe dwa wiersze:
-:- use_module(kamil_breczko_tests).
-:- use_module(kamil_breczko_parser).
+:- use_module(tests).
+:- use_module(parser).
 
 test_all :-
   ( test_name_duplicate(Name) ->
