@@ -1,0 +1,21 @@
+(* sprawdzenie priorytety i lacznosc, wyrazenia *)
+
+def program(A, B, C) =
+	if A=0 then A*1+2@-3&#42|42<>222/2%B-C^~A	
+	else let N = -B in
+	A@3,B*2,N-1,A<3
+	
+def ok(A)=
+	if 
+		if 
+			if A>1
+			then A
+			else 0
+		then 
+			1
+		else 
+			0
+	then 
+		1
+	else 
+		0

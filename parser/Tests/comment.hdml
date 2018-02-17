@@ -1,0 +1,12 @@
+(* *) (**)(* (* test analizy leksykalnej *) zagniezdzenie komentarzy *) (**) (* *)
+def _let(_A, B1, _C, D) =
+	(* (* # ? *)
+	if _A = 10 then _C, [(_A @ B1) ^ D]
+	else
+	(* let N = 0 (* *)
+    	let _'def' = (_A + B1)*42 in
+    	_C, _'def' 
+    	(* ... *)
+	(* sprawdzenie poprawnosci komentarzy i nazw zmiennych * ) *)
+	1  
+

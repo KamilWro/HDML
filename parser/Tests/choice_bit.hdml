@@ -1,0 +1,56 @@
+(* Sprawdzenie operatorow bianarnych, wybor bitow *)
+  
+def choice_bit( A ) =
+	let N = A*#A in
+	if N/A = 1 then A[1] 
+	else A[[]]
+
+def choice_bit_exp( A )=
+	(A + 42)[let N=A*2 in if N/2=1 then A[1] else A[[]]]
+
+def choice_bits(A, B)=
+	let M = A-1 in
+	if N%2 = 1 then A[(N%2)..1 @ N] 
+	else A[choice_bit(_a)..[0]]	
+
+def choice_bits_exp(A, B)=
+	(let N=1 in 
+	 if A=N then A else B
+	)[
+	  let N=42 in 
+	  if B^2=N then A[1] else A[let N=1 in if N=_a then _a else [42]]
+	  ..
+	  if A=B then A else B
+	 ]
+	 
+def bit(A,N) =
+	 A[N]
+	
+def bits(A,F,T) =
+ 	A[F..T]
+ 	
+def bits(a)=
+	a[4][3][2][1..0]
+
+def bit(a)=
+	a[4..2][1]
+
+(* zagniezdzenia *)
+def main(A, B) =
+	let H1 = choice_bit(A) in
+	let H2 = choice_bit_exp(A) in
+	let H3 = choice_bits(A, B) in
+	let H4 = choice_bits_exp(A,B) in
+	if (H1 = 0) then
+		if (H2=0) then
+			if(H3=0) then
+				if(H4=0) then
+					(B[42..1])[42/2.._a]
+				else
+					(B[[]])[[]]
+			else 
+				[]
+		else
+			_a[[1]]
+	else
+		A[_a[_a[_a[[][[]..[]]]]]]

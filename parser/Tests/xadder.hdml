@@ -1,0 +1,12 @@
+def or_of(A) =
+  let N = #A in
+  if N = 0 then [0]
+  else if N = 1 then A
+  else
+    let H = N / 2 in
+    or_of(A[H-1..0]) | or_of(A[N-1..H])
+
+def main(A, B, C) =
+  let C1, S1 = ripple_carry_adder(A, B, C) in
+  let C2, S2 = log_depth_adder(A, B, C) in
+  ~((C1 ^ C2) | or_of(S1 ^ S2))

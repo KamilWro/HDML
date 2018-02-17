@@ -1,0 +1,51 @@
+(* prawdopodobienstwo przedwczesnego zakonczenia programu, wywolanie funkcji *)
+
+(* potraktowanie wywolania funkcji jako zmienna ... *)
+def loop_1(a,b)=
+	if a=_a then
+		_a(a)
+	else _a(b)
+	
+def loop_2(a,b)=
+	let _=_a(a) in _a(b) 	
+	
+def function(a)=
+	loop(
+		(let N=a*c in N), 
+		(if a then b 
+			else loop(
+				(let N=a*b in N), 
+				(if a then b 
+					else loop(
+						_a,_a
+					)
+				)
+			)				
+		)
+	)
+			
+def choice_bit(_,_)=
+	_a[_a]
+	
+def choice_bits(_,_)=
+	_a[_a.._a]
+
+def call_function(_,_)=
+	_a(_a)
+	
+def op_bin0(a,b)=
+	a+b
+
+def op_bin1(a,b)=
+	b & a
+	
+def op_bin2(a,b)=
+	b | a
+	
+def op_bin3(a,b)=
+	a < 2
+	
+def op_bin4(_)=
+	a , b
+	
+	

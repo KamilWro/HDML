@@ -1,0 +1,8 @@
+(* koniec wiersza zgodny z WINDOWS *)
+
+def	main	(	X	)	=
+	let N = 1 in
+	if N	< X	then [ X ]
+	else
+		if (X) then X
+		else X[N..X]

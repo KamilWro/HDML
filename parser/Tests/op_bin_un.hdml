@@ -1,0 +1,39 @@
+(* Kilka definicji funkcji*)
+(* Sprawdzenie operatorow binarnych (porownania) i unarnych*)
+
+(* F1 *)
+def OR (A, B) =
+	if 0 <> A | B then [1]
+	else [0]
+
+(* F2 *)	
+def AND (A,B) =
+	let res = A & B in
+	[res]
+
+(* F3 *)
+def XOR (A,B) =
+	if (A | B > 0) & (A & B < 1) then [A^B]
+	else [0]
+	
+(* F4 *)
+def NOT (A)=
+	if A = 0 then [0]
+	else if A >= 1 then [-(-A)]
+	else [~~~A]
+	
+(* F5 *)
+def RIGHT(A)=
+	let N= #A in
+	if (N<=2) then A[2]
+	else A[N..2] 
+	
+(* F6 *)
+def Left(A)=
+	let N= ##A in
+	if N>1 then A[N-1..1]
+	else A[1]
+	
+(* F7 *)
+def test(a)=
+	~#-#a*#~-a

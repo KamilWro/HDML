@@ -1,0 +1,9 @@
+(* Niepoprawny wzorzec przy wyrazeniu let *)
+
+def main(A, B, C, D)=
+	if 0 = A | B then
+		if 0 = C & D then  [0]
+		else [1]
+	else
+		let #N = #A in
+		[N]
