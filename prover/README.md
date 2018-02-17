@@ -1,11 +1,7 @@
-# Pracownia nr. 2
-<i>Metody Programowania, semestr letni 2016/2017 II UWr</i> <br>
-<i>Program obliczający rezolwentę dwóch klauzul oraz szukający rezolucyjnego dowodu sprzeczności. </i> <br>
+# Program obliczający rezolwentę dwóch klauzul oraz szukający rezolucyjnego dowodu sprzeczności.
 <i>Język Programowania: Prolog</i> <br>
 <br>
-
 Sposób rozwiązania:<br>
-<i>
 Porządkowanie listy wejściowej. Usunięte zostaną tautologie, nadzbiory oraz klauzule, które zawierają zbędne literały. 
 Podzielenie zbioru klauzul na zbiór o negatywnym wystąpieniu zmiennych - "NegativeTuples" oraz zbiór z resztą 
 klauzul "RestTuples". Idea rozwiązania polega na wyprowadzaniu rezolwent z przesłanek znajdujących się w 
@@ -16,19 +12,16 @@ zapętleniu i odkładana. Program będzie próbował tworzyć nowe rezolwenty do
 klauzula w "NegativeTuples". 
 <br>
 <br>
-Uwaga: Listy klauzul jest posortowana względem długości klauzuli. <br>
-Uwaga: Powstała rezolwenta nie może być tautologią. Także po każdej rezolwencie są usuwane nadzbiory.
+<b>Uwaga:</b> Listy klauzul jest posortowana względem długości klauzuli. <br>
+<b>Uwaga:</b> Powstała rezolwenta nie może być tautologią. Także po każdej rezolwencie są usuwane nadzbiory.
 </i>
 <br>
 <br>
 <br>
-<br>
-<br>
-Tresc zadania: <b>prac2.pdf</b> <br>
-Testy poprawnościowe/wydajnościowe: <b>kamil_breczko_tests.pl</b> <br>
-Rozwiązanie zadania: <b>kamil_breczko.pl</b> <br>
-Sprawdzarka: <b>prac2.pl</b> <br>
-<br>
+Tresc zadania: [prac2.pdf](./prac2.pdf) <br>
+Testy poprawnościowe/wydajnościowe: [kamil_breczko_tests.pl](./kamil_breczko_tests.pl) <br>
+Rozwiązanie zadania: [kamil_breczko_prover.pl](./kamil_breczko_prover.pl)<br>
+Sprawdzarka: [prac2.pl](./prac2.pl) <br>
 <br>
 <br>
 Sprawdzaczkę należy uruchomić w katalogu w którym znajdują się testy i rozwiązania, poleceniem: <br>

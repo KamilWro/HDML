@@ -1,15 +1,11 @@
-# Pracownia nr. 3
-<i>Metody Programowania, semestr letni 2016/2017 II UWr</i> <br>
-<i>Parser języka HDML </i> <br>
+# Parser języka HDML
 <i>Język Programowania: Prolog</i> <br>
 <br>
 <br>
-Tresc zadania: <b>prac3.pdf</b> <br>
-Testy poprawnościowe: <b>kamil_breczko_tests.pl</b> <br>
-Rozwiązanie zadania: <b>kamil_breczko.pl</b> <br>
-Sprawdzarka: <b>prac3.pl</b> <br>
-<br>
-<br>
+Treść zadania: [prac3.pdf](./prac3.pdf) <br>
+Testy poprawnościowe: [kamil_breczko_tests.pl](./kamil_breczko_tests.pl) <br>
+Rozwiązanie zadania: [kamil_breczko_parser.pl](./kamil_breczko_parser.pl)<br>
+Sprawdzarka: [prac3.pl](./prac3.pl) <br>
 <br>
 Sprawdzaczkę należy uruchomić w katalogu w którym znajdują się testy i rozwiązanie, poleceniem: <br>
 <i>swipl prac3.pl</i>

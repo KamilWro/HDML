@@ -1,6 +1,4 @@
-# Pracownia nr. 1
-<i>Metody Programowania, semestr letni 2016/2017 II UWr</i><br>
-<i>Program szukający wartościowań spełniających zadany zbiór klauzul </i><br>
+# Program szukający wartościowań spełniających zadany zbiór klauzul 
 <i>Język Programowania: Prolog</i>
 <br>
 <br>
@@ -20,10 +18,10 @@ Sposób rozwiązania:<br>
 <br>
 <br>
 
-Tresc zadania: <b>prac1.pdf</b><br>
-Testy poprawnościowe/wydajnościowe: <b>kamil_breczko_tests.pl</b><br>
-Rozwiązanie zadania: <b>kamil_breczko.pl</b><br>
-Sprawdzarka: <b>prac1.pl</b><br>
+Tresc zadania: [prac1.pdf](./prac1.pdf) <br>
+Testy poprawnościowe/wydajnościowe: [kamil_breczko_tests.pl](./kamil_breczko_tests.pl)<br>
+Rozwiązanie zadania: [kamil_breczko_solver.pl](./kamil_breczko_solver.pl) <br>
+Sprawdzarka: [prac1.pl](./prac1.pl) <br>
 <br>
 <br>
 <br>
