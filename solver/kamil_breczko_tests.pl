@@ -20,7 +20,7 @@
 %		count(n) gdzie n jest liczbą różnych wartościowań spełniających Input
 
 %--------------------------------------------------------------------------------------------------
-% 					Testy poprawnościowe
+%                                           Testy poprawnościowe
 %--------------------------------------------------------------------------------------------------
 
 % Proste
@@ -116,8 +116,9 @@ tests(de_Morgans_law_negation, validity,
 tests(modus_tollendo_tollens, validity, [~p v q v p, ~p v q v ~q], 500, solution([(p,t),(q,f)])).
 
 %--------------------------------------------------------------------------------------------------
-% 					Testy wydajnościowe
+%                                            Testy wydajnościowe
 %--------------------------------------------------------------------------------------------------
+
 tests(short_test, performance, 
 [~zq v ~ut v ~uz, ~ut v zg v ~uw , ~zg v ~q v zu, zs v ~uw v o, ~o v ~zz v zs, ~zs v ~q v ~zu, 
 ~uo v ~zg v ~w, uo v ~ur v ~uq, ~uq v ~w v ~zq, zq v o v ~r, p v zs v og, zr v ~uu], 

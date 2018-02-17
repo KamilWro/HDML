@@ -11,14 +11,11 @@ solve(Clauses, Solution) :-
 	setValue(RestClauses,Valuation,NewValuation),	
 	merge(GeneralValuation,NewValuation,Solution).
 
-
-
 %--------------------------------------------------------------------------------------------------
-% 					Predykat simple/5
+%                                          Predykat simple/5
+%--------------------------------------------------------------------------------------------------
 % Wstępne przesortowanie klauzul. Nadanie wartościowań zmiennym tym które występują jako pojedynczy 
 % literał w klauzuli.
-% simple(Lista klauzul,[Acc] Lista klauzul złożonych, [Acc] Wartościowanie zmiennych)
-%--------------------------------------------------------------------------------------------------
 
 simple([],AccComplex,AccComplex,AccVal,AccVal).
 simple([[]|_],_,_,_,_):-!,fail.
@@ -37,12 +34,11 @@ simple([HClause|TClauses],AccComplex,ComplexClauses,AccVal,Valuation):-
 
 
 %--------------------------------------------------------------------------------------------------
-% 					Predykat complex/6
+%                                       Predykat complex/6
+%--------------------------------------------------------------------------------------------------
 % Sprawdzanie spełnialności klauzul złożonych, wyjmowane są te klauzule z listy które są spełnialne 
 % zawsze a literały w niej zapamiętane.
-% complex(Klauzule,[Acc] i Lista list z literałami, Wartościowania, [Acc] Wartosciowania uogólnione 
-%  pobrane z klauzul spełnionych
-%--------------------------------------------------------------------------------------------------
+
 complex([],AccList,AccList,_,AccGeneral,AccGeneral).
 complex([HClause|TClauses],AccList,ListClauses,Valuation,AccGeneral,GeneralValuation):-
 	stripClouses([HClause],[],Clause,[],Variables,Valuation,IsTrue,IsNeutral),
@@ -58,12 +54,11 @@ complex([HClause|TClauses],AccList,ListClauses,Valuation,AccGeneral,GeneralValua
 	     complex(TClauses,[SortClause|AccList],ListClauses,Valuation,AccGeneral,GeneralValuation)
 	    )
 	).
+
 %--------------------------------------------------------------------------------------------------
-% 					Predykat stripClouses/8
+%                                   Predykat stripClouses/8
+%--------------------------------------------------------------------------------------------------
 % Rozbiera klauzule na literały, sprawdzając czy klauzula złożona jest spełniona/sprzeczna. 
-% -stripClouses(Klauzula do rozebrania, [Acc] Klauzula w postaci listy literałów,[Acc] Zmienne bez wartości,
-%  Wartościowanie, Klauzula prawdziwa,Klauzula nie fałszywa)	
-%--------------------------------------------------------------------------------------------------
 
 stripClouses([],AccRest,AccRest,AccVar,AccVar,_,_,_):-!.
 stripClouses([HClause],AccRest,[HClause|AccRest],AccVar,AccVar,Valuation,IsTrue,IsNeutral):-
@@ -81,15 +76,15 @@ stripClouses([HClause v TClause],AccRest,RestClause,AccVar,Variables,Valuation,I
 			
 
 %--------------------------------------------------------------------------------------------------
-% 					Predykat setValue/3
-% Nadanie wartości zmiennym w klauzuli
-% setValue(Klauzula, Wartościowanie, Nowe Wartościowanie) 
+%                                       Predykat setValue/3
 %--------------------------------------------------------------------------------------------------
+% Nadanie wartości zmiennym w klauzuli
 
 setValue([],Valuation,Valuation):-!.
-setValue(RestClauses,Evaluation,FinalValuation):-
-	setValue(RestClauses,Evaluation,NewValuation,[],GeneralValuation),
+setValue(RestClauses,Valuation,FinalValuation):-
+	setValue(RestClauses,Valuation,NewValuation,[],GeneralValuation),
 	merge(GeneralValuation,NewValuation,FinalValuation).	
+
 %--------------------------------------------------------------------------------------------------
 setValue([],Valuation,Valuation,GeneralValuation,GeneralValuation).
 setValue([[]|TRest],Valuation,NewValuation,AccGeneral,GeneralValuation):-!,
@@ -116,11 +111,10 @@ setValue([[HLiteral|TLiteral]|TRest],Valuation,NewValuation,AccGeneral,GeneralVa
 
 
 %--------------------------------------------------------------------------------------------------
-% 					Predykat checkClauses/5
-% Pomocniczy predykat do setValue/5, usuwa klazule spełnione zachowując ich zmienne.
-% checkClauses(Klauzule, Klauzule po usunięciu spełnionych klauzul, Wartościowanie,
-%  [Acc] Nowe Wartościowanie uogólnione) 
+%                                      Predykat checkClauses/5
 %--------------------------------------------------------------------------------------------------
+% Pomocniczy predykat do setValue/5, usuwa klazule spełnione zachowując ich zmienne.
+
 checkClauses([],[],_,AccGeneral,AccGeneral).
 checkClauses([HClause|TClauses],RestClauses,Valuation,AccGeneral,GeneralValuation):-
 	select(HClause,Valuation,Variables,IsTrue,IsNeutral),
@@ -137,10 +131,10 @@ checkClauses([HClause|TClauses],RestClauses,Valuation,AccGeneral,GeneralValuatio
 	).
 
 %--------------------------------------------------------------------------------------------------
-% 					Predykat select/5
-% Sprawdza czy klauzula jest spełniona/sprzeczna
-% select(Klauzula,Wartościowanie,Zmienne bez wartości, Czy jest spełniona?, Czy nie jest sprzeczna?) 
+%                                           Predykat select/5
 %--------------------------------------------------------------------------------------------------
+% Sprawdza czy klauzula jest spełniona/sprzeczna
+
 select([],_,[],_,_):-!.
 select([HLiteral|TLiteral],Valuation,Variables,IsTrue,IsNeutral):-
 	isBool(HLiteral,Valuation,IsTrue,_,_),!,	
@@ -149,11 +143,11 @@ select([HLiteral|TLiteral],Valuation,Variables,IsTrue,x):-
 	choose(HLiteral,X),	
 	Variables=[X|Acc],
 	select(TLiteral,Valuation,Acc,IsTrue,x).
+
 %--------------------------------------------------------------------------------------------------
-% 					Predykat excluded_middle/1
+%                                       Predykat excluded_middle/1
+%--------------------------------------------------------------------------------------------------
 % Sprawdza czy klauzula podlega prawu wyłączonego środka
-% excluded_middle(Klauzula) 
-%--------------------------------------------------------------------------------------------------
 
 excluded_middle([HLiteral|TLiteral]):-
 	excluded_middle(HLiteral,TLiteral),!.
@@ -166,14 +160,14 @@ excluded_middle(H,[_|T]):-
 	excluded_middle(H,T).
 
 %--------------------------------------------------------------------------------------------------
-% 					Obsługa listy wartościowań
+%                                       Obsługa listy wartościowań
 %--------------------------------------------------------------------------------------------------
 
 addTrue(Clause, (Clause, t)).
 addFalse(Clause, (Clause, f)).
 addGeneral(Clause, (Clause, x)).
 
-%Dodaje do listy wartościowań zmienną o wartościowaniu _.
+% Dodaje do listy wartościowań zmienną o wartościowaniu _.
 addLiteralGeneral(Literal,Valuation,NewValuation):-
 	choose(Literal,X),
 	addGeneral(X,General),
@@ -229,9 +223,8 @@ isBool(H,Valuation,IsTrue,IsFalse,IsGeneral):-
 	   IsGeneral=x
 	).
 
-
 %--------------------------------------------------------------------------------------------------
-% 					Pomocnicze predykaty
+%                                       Pomocnicze predykaty
 %--------------------------------------------------------------------------------------------------
 
 % Scalanie dwóch list, przy czym kiedy elementy w pierwszej liście powtarzają się w drugiej liście, 
@@ -246,7 +239,6 @@ merge([(X1,V1)|A], [(X2,V2)|B], [(X2,V2)|Rs]) :-
         merge([(X1,V1)|A],B, Rs).
 merge([(X,_)|A], [(X,V)|B], [(X,V)|Rs]) :-
         merge(A,B, Rs).
-
 
 %Sprawdza czy klauzula jest złożona
 check(_ v _).

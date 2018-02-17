@@ -1,7 +1,7 @@
 :- module(kamil_breczko_parser, [parse/3]).
 
 % ==================================================================================================
-%											 UWAGA
+%                                               UWAGA
 %
 % WERSJA 1		Wersja przed testami
 % Testy uznaja za poprawne komentarze takie, ze komentarz zaczyna sie od sekwencji znakow "(*" 
@@ -32,7 +32,7 @@ parse(Path, Codes, Program) :-
     phrase(program(Program), TokList).
 
 % ==================================================================================================
-%											Analizator leksykalny
+%                                           Analizator leksykalny
 % ==================================================================================================
 
 lexer(Tokens,Pos) -->
@@ -74,7 +74,7 @@ lexer(Tokens,Pos) -->
    ).
 
 % --------------------------------------------------------------------------------------------------
-%										  Biale znaki
+%                                         Biale znaki
 % --------------------------------------------------------------------------------------------------
 white_space(Pos,NewPos) -->
 	[Char], { code_type(Char, space)} , !, next_char(Pos,TmpPos,Char), white_space(TmpPos,NewPos).
@@ -82,7 +82,7 @@ white_space(Pos,Pos) -->
 	[].
 
 % --------------------------------------------------------------------------------------------------
-%											Liczba
+%                                           Liczba
 % --------------------------------------------------------------------------------------------------
 numbers(Pos,NewPos, Token)-->
 	digit(D), number(D, N),{ size(N,S), next_num(Pos,NewPos,S),  Token = tokNumber(N,Pos) }.
@@ -100,7 +100,7 @@ number(D, N) -->
 	digits(Ds),{ number_chars(N, [D|Ds])}.
 
 % --------------------------------------------------------------------------------------------------
-%										 Identyfikator
+%                                         Identyfikator
 % --------------------------------------------------------------------------------------------------
 id(Pos,NewPos,Token)-->
 	letter(L), identifier(L, Id), {size(Id,S), next_num(Pos,NewPos,S)},
@@ -136,7 +136,7 @@ identifier(L, Id) -->
 
 
 % --------------------------------------------------------------------------------------------------
-%										 Komentarz
+%	                                        Komentarz
 % --------------------------------------------------------------------------------------------------	
 
 % Wersja 1 	(zakomentowana, poniewaz sprawdzaczka uznaje za prawidlowa wersje 2)
@@ -168,7 +168,7 @@ identifier(L, Id) -->
  	[ASCII], next_char(Acc,NewAcc,ASCII), comment(NewAcc,Pos).
 	
 % --------------------------------------------------------------------------------------------------
-%										Pomocnicze do lexer/2
+%                                       Pomocnicze do lexer/2
 % --------------------------------------------------------------------------------------------------
 next_char(file(P, L, LP, CN, _), file(P, L_, LP_, CN_, _), ASCII)-->
 	( next(Char),
@@ -210,7 +210,7 @@ throwLexer(Reason,Pos):-
 	throw(syntax_error(Reason, Pos)).
 	
 % ==================================================================================================
-%										Analizator skladniowy
+%                                      Analizator skladniowy
 % ==================================================================================================
 % W celu okreslenia dokladnej pozycji program korzysta z podanego oznaczenia:
 % 	PosA(Accumulator Position)- Akumulator z pozycja
@@ -234,7 +234,7 @@ throwLexer(Reason,Pos):-
 
 
 % --------------------------------------------------------------------------------------------------
-%											Program
+%                                             Program
 % --------------------------------------------------------------------------------------------------
 program(Program) -->
 	definitions(Program).
@@ -242,7 +242,7 @@ program([]) -->
 	[].
 
 % --------------------------------------------------------------------------------------------------
-%											Definicje
+%                                             Definicje
 % --------------------------------------------------------------------------------------------------	
 definitions(Program)-->
 	definition(Def),!, {Program=[Def|Rest]}, definitions(Rest).
@@ -259,7 +259,7 @@ definition(_)-->
 	throwParser("incorrect definition").
 	
 % --------------------------------------------------------------------------------------------------
-%											Wzorzec
+%                                             Wzorzec
 % --------------------------------------------------------------------------------------------------
 patterns(Pat,PosB,PosE)-->
 	  patterns_lvl(X,PosB,PosA),
@@ -283,7 +283,7 @@ pattern(Pat,Pos,Pos)-->
 	).
 	
 % --------------------------------------------------------------------------------------------------
-%											Wyrazenie
+%                                           Wyrazenie
 % --------------------------------------------------------------------------------------------------
 expression(Exp,PosB,PosE)-->
 	[tokIf(PosB)],!,expression(ExpIf,_,_),
@@ -301,7 +301,7 @@ expression(_,_,_)-->
 	 throwParser("incorrect expression").
 
 % --------------------------------------------------------------------------------------------------
-%								Wyrazenie z operatorem binarnym
+%                                   Wyrazenie z operatorem binarnym
 % --------------------------------------------------------------------------------------------------
 
 % op_1= [ ',' ]
@@ -348,7 +348,7 @@ expression_op_5(Exp,Exp,_,PosE,PosE)-->
 	[].
 
 % --------------------------------------------------------------------------------------------------
-%								Wyrazenie z operatorem unarnym
+%                               Wyrazenie z operatorem unarnym
 % --------------------------------------------------------------------------------------------------
 
 % op_unary= ['-','#','~']
@@ -359,7 +359,7 @@ expression_op_unary(Exp,PosB,PosE)-->
 	choice_bit(Exp,PosB,PosE).
 		
 % --------------------------------------------------------------------------------------------------
-%										Wybor bitow
+%                                       Wybor bitow
 % --------------------------------------------------------------------------------------------------
 choice_bit(Exp,Acc,PosB,PosE,_)-->
 	[tokLSquare(_)],!,expression(Exp2,_,_),
@@ -375,14 +375,14 @@ choice_bit(Exp,PosB,PosE)-->
 	expression_simple(Acc,PosB,PosA),choice_bit(Exp,Acc,PosB,PosE,PosA).
 
 % --------------------------------------------------------------------------------------------------
-%									 Wyrazenie proste
+%                                     Wyrazenie proste
 % --------------------------------------------------------------------------------------------------
 expression_simple(Exp,PosB,PosE)-->
 	  [tokLParen(PosB)],!,expression(Exp,_,_),[tokRParen(PosE)]
 	; expression_atomic(Exp,PosB,PosE).
 
 % --------------------------------------------------------------------------------------------------
-%								 	Wyrazenie atomowe
+%                                     Wyrazenie atomowe
 % --------------------------------------------------------------------------------------------------
 expression_atomic(Exp,PosB,PosE)-->
 	  call_function(Exp,PosB,PosE),!
@@ -411,7 +411,7 @@ vector(Exp,PosB,PosE)-->
 	).
 	
 % --------------------------------------------------------------------------------------------------
-%									Operatory binarne i unarne
+%                                   Operatory binarne i unarne
 % --------------------------------------------------------------------------------------------------	
 op_1(',',Pos)-->	
 	[tokComma(Pos)].
@@ -453,7 +453,7 @@ op_unary('-',Pos)-->
 	[tokMinus(Pos)].
 	
 % ==================================================================================================
-%											Pomocnicze
+%                                           Pomocnicze
 % ==================================================================================================		
 	
 % Zwraca pozycje wyrazenia wraz z dlugoscia wyrazenia

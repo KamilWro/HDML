@@ -9,7 +9,7 @@ run(Program, FName, Arg, Value, Clauses) :-
 	expression(E,Environment,Program, Value, Clauses).
 	  
 %===================================================================================================
-%											srodowisko
+%                                            srodowisko
 %===================================================================================================
 environment(pair(_,P1,P2),(H,T),Acc,Env):-
 	environment(P1,H,Acc,Acc1),
@@ -28,13 +28,13 @@ environment(pair(PosThrow,_,_),_,_,_):-
 
 
 %===================================================================================================
-%											Wyrazenia				
+%                                            Wyrazenia				
 %===================================================================================================
 % wyrazenie(wyrazenie,srodowisko,lista_definicji, wartosc, efekt uboczny)
 
 
 %---------------------------------------------------------------------------------------------------
-%										Wyrazenia atomowe
+%                                        Wyrazenia atomowe
 %---------------------------------------------------------------------------------------------------
 expression(empty(_),_,_,[],[]).
 
@@ -59,7 +59,7 @@ expression(bit(PosThrow,_),_,_,_,_):-
 	throw(runtime_error("segmentation fault", PosThrow)).	
 	
 %---------------------------------------------------------------------------------------------------
-%										Wybor bitow
+%                                            Wybor bitow
 %---------------------------------------------------------------------------------------------------
 % Wazne
 % Specyfikacja wyboru bitow w tresci zadania nie rozstrzyga przypadku, jesli przy wyborze bitow Num2 jest 
@@ -94,7 +94,7 @@ expression(bitsel(PosThrow,_,_,_),_,_,_,_):-
 	throw(runtime_error("segmentation fault", PosThrow)).
 
 %---------------------------------------------------------------------------------------------------
-%											Para
+%                                            Para
 %---------------------------------------------------------------------------------------------------
 expression(pair(_,E1,E2),Environment,Program,Values,Clauses):-
 	expression(E1,Environment,Program,V1,C1),
@@ -105,7 +105,7 @@ expression(pair(PosThrow,_,_,_),_,_,_,_):-
 	throw(runtime_error("incorrect expression", PosThrow)).
 	
 %---------------------------------------------------------------------------------------------------
-%										Operacje na sygnalach	
+%                                    Operacje na sygnalach	
 %---------------------------------------------------------------------------------------------------
 
 expression(op(_,Op,E1,E2),Environment,Program,Values,Clauses):-
@@ -139,7 +139,7 @@ expression(op(_,'#',E),Environment,Program,Values,Clauses):-
 	length(Signals,Values).
 		
 %---------------------------------------------------------------------------------------------------
-%										Operacje na liczbach	
+%                                      Operacje na liczbach	
 %---------------------------------------------------------------------------------------------------
 expression(op(_,'-',E),Environment,Program,Values,Clauses):-
 	expression(E,Environment,Program,Num,Clauses),
@@ -214,7 +214,7 @@ expression(op(PosThrow,Op,_),_,_,_,_):-
 	memberchk(Op,['~','#']),
 	throw(runtime_error("expected signals", PosThrow)).
 %---------------------------------------------------------------------------------------------------
-%											Wyrazenie if
+%                                          Wyrazenie if
 %---------------------------------------------------------------------------------------------------
 expression(if(_,E1,E2,E3),Environment,Program,Values,Clauses):-
 	expression(E1,Environment,Program,Num,C1),
@@ -228,7 +228,7 @@ expression(if(PosThrow,_,_,_),_,_,_,_):-
 	throw(runtime_error("invalid if expression", PosThrow)).
 	
 %---------------------------------------------------------------------------------------------------
-%											Wyrazenie let
+%                                          Wyrazenie let
 %---------------------------------------------------------------------------------------------------
 
 expression(let(_,P,E1,E2),Environment,Program,Values,Clauses):-
@@ -240,7 +240,7 @@ expression(let(PosThrow,_,_,_),_,_,_,_):-
 	throw(runtime_error("invalid let expression", PosThrow)).
 
 %---------------------------------------------------------------------------------------------------
-%										Wyrazenie <wywolanie funkcji>
+%                                     Wyrazenie <wywolanie funkcji>
 %---------------------------------------------------------------------------------------------------
 expression(call(_, Name, E),Environment,Program,Values,Clauses):-
 	expression(E,Environment,Program,V,C1),
@@ -253,7 +253,7 @@ expression(call(PosThrow,_,_),_,_,_,_):-
 	
 
 %===================================================================================================
-%											Produkcja klauzul			
+%                                        Produkcja klauzul			
 %===================================================================================================
 clauses(Values, Clauses) -->
 	[s(Op,B,C)],
@@ -352,11 +352,11 @@ clauses([],[]) -->
 	[].
 	
 %===================================================================================================
-%											Pomocnicze				
+%                                        Pomocnicze				
 %===================================================================================================
 
 %---------------------------------------------------------------------------------------------------
-% 							Wybieranie listy zaczynajacej sie od FROM do TO
+%                        Wybieranie listy zaczynajacej sie od FROM do TO
 %---------------------------------------------------------------------------------------------------
 
 select(List,FROM,TO,Res):-
@@ -380,7 +380,7 @@ next([_|T],Count, FROM, NewList):-
 next(NewList,FROM, FROM, NewList).
 
 %---------------------------------------------------------------------------------------------------
-%								laczy dwie listy z podanym operatorem
+%                            laczy dwie listy z podanym operatorem
 %---------------------------------------------------------------------------------------------------
 concate([],[],_,[]):- !.
 concate([],[_],_,[]):- !.
@@ -389,7 +389,7 @@ concate([H1|T1],[H2|T2],Op,[s(Op,H1,H2)|List]):-
 	concate(T1,T2,Op,List).
 	
 %---------------------------------------------------------------------------------------------------
-%										Wybor definicji
+%                                    Wybor definicji
 %---------------------------------------------------------------------------------------------------	
 choose_def([def(Name,P,E)|_],Name, def(Name,P,E)):-!.
 choose_def([_|T],Name, Def):-
